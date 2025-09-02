@@ -19,7 +19,7 @@
 // app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
 import express from "express";
 import cors from "cors";
-import schoolRoutes from "./schools.js"; // 👈 import your router
+import schoolRoutes from "./routes/schools.js"; // 👈 import your router
 
 const app = express();
 
