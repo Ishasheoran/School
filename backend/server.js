@@ -18,20 +18,18 @@
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
 import express from "express";
-import initDB from "./db.js";
+import cors from "cors";
+import schoolRoutes from "./schools.js"; // 👈 import your router
 
 const app = express();
-app.use(express.json());
 
-app.get("/test-db", async (req, res) => {
-  try {
-    const db = await initDB();
-    const [rows] = await db.execute("SELECT NOW() as currentTime");
-    res.json(rows[0]);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("DB Error");
-  }
-});
+app.use(cors({
+  origin: "https://school-kappa-eight.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+app.use(express.json());
+app.use("/api/schools", schoolRoutes); // 👈 mount it
 
 app.listen(7000, () => console.log("🚀 Server running on port 7000"));
