@@ -9,7 +9,7 @@ const ShowSchools = () => {
   useEffect(() => {
     // fetch data from backend
     axios
-      .get("http://localhost:5000/api/schools") // adjust port if needed
+      .get("https://school-1b6n.onrender.com/api/schools") // adjust port if needed
       .then((res) => {
         setSchools(res.data);
         setLoading(false);
