@@ -20,7 +20,7 @@ const Form = () => {
       formData.append("email", data.email);
       formData.append("image", data.image[0]); // file
 
-      const res = await axios.post("http://localhost:5000/api/schools", formData, {
+      const res = await axios.post("https://school-1b6n.onrender.com/api/schools", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
